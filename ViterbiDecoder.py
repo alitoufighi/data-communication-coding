@@ -2,6 +2,7 @@ from sys import maxsize
 from collections import defaultdict
 from utils import *
 
+
 class ViterbiDecoder:
     _mappings = {
         "100": "11",
