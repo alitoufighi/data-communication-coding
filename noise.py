@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def noise(data):
+def noise(data: str) -> str:
     result = ""
     for i in range(len(data)):
         r = np.random.rand()

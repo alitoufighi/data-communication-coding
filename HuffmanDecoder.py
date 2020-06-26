@@ -7,12 +7,12 @@ class HuffmanDecoder:
         self.char_frequencies = probabilities
         self.mappings = self._create_mappings()
 
-    def _create_mappings(self):
+    def _create_mappings(self) -> dict:
         huffman_mappings = create_huffman_mappings(self.char_frequencies)
         assert int(huffman_mappings[0]) == 1
         return {v: k for k, v in huffman_mappings[1].items()}  # invert key, values for binary to character mappings
     
-    def decode(self, binary_string: str):
+    def decode(self, binary_string: str) -> str:
         result = ""
         searching_symbol = ""
         for char in binary_string:

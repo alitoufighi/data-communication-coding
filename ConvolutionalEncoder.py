@@ -11,7 +11,7 @@ class ConvolutionalEncoder:
     }
     
     @staticmethod
-    def encode(binary_string):
+    def encode(binary_string: str) -> str:
         result = ""
         shift_register = '00'
         for bit in binary_string:

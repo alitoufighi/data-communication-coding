@@ -1,11 +1,12 @@
 from mat4py import loadmat
 from itertools import chain
+from typing import List, Union
 from heapq import heappush, heappop, heapify
 
 
 # Reads probabilities from .mat file
 # and returns the flattened list as a dictionary with alphabet letters as keys
-def read_probabilities():
+def read_probabilities() -> dict:
     data = loadmat('freq.mat')['freq']
     result = {}
     for index, probability in enumerate(list(chain.from_iterable(data))):
@@ -14,7 +15,7 @@ def read_probabilities():
     return result
 
 
-def decimal_to_binary(decimal: int, min_bits=1) -> str:
+def decimal_to_binary(decimal: int, min_bits: int = 1) -> str:
     result = str(bin(decimal))[2:]
     if len(result) < min_bits:
         result = (min_bits - len(result)) * '0' + result
@@ -34,7 +35,7 @@ def calculate_hamming_distance(bin1: str, bin2: str) -> int:
     return result
 
 
-def create_huffman_mappings(char_frequencies):
+def create_huffman_mappings(char_frequencies: dict) -> List[Union[int, dict]]:
     # each item in heap is a list, with first index containing probability, and
     # second index as a dict consisting all previously-merged symbols
     # (with symbol as key and encoded binary as value)
